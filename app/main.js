@@ -3,7 +3,8 @@
     'angular-route',
     'application',
     'routeResolver',
-    'route'
+    'route',
+    'ng-i18next'
 ] , function(angular) {
     'use strict';
 

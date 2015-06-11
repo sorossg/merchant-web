@@ -7,7 +7,8 @@
     var app = angular.module('merchantWeb',
     [
         'routeResolver',
-        'ngRoute'
+        'ngRoute',
+        'jm.i18next'
     ]);
 
     app.register = app;
@@ -20,12 +21,14 @@
         '$compileProvider',
         '$filterProvider',
         '$provide',
+        '$i18nextProvider',
         function ($routeProvider,
             routeResolverSvc,
             $controllerProvider,
             $compileProvider,
             $filterProvider,
-            $provide
+            $provide,
+            $i18nextProvider
             ) {
 
             app.register = {
@@ -35,6 +38,18 @@
                 factory: $provide.factory,
                 service: $provide.service
             };
+
+            var $i18nextProviderOptions = {
+                lng: 'en',
+                useCookie: false,
+                useLocalStorage: false,
+                fallbackLng: 'en',
+                resGetPath: '/json/translations/__lng__.json'
+            };
+
+            i18n.init($i18nextProviderOptions);
+
+            $i18nextProvider.options = $i18nextProviderOptions
         }
     ]);
     return app;
