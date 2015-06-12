@@ -2,21 +2,20 @@
  * Created by Hieu M.Tr on 6/12/2015.
  */
 define([
-    'application',
-    'i18next'
-], function (app, i18next) {
+    'application'
+], function (app) {
     'use strict';
     app.register.factory('i18nSvc',
         [function () {
-            var i18n = {};
+            var __lng = {};
 
-            i18n.calendar = {
-                greeting: i18next.t('greeting')
+            __lng.calendar = {
+                greeting: i18n.t('greeting')
             };
 
             return {
                 getLanguage: function (area) {
-                    return i18n[area];
+                    return __lng[area];
                 }
             }
         }]);

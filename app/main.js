@@ -1,12 +1,13 @@
-﻿define([
-    'angular',
-    'angular-route',
-    'application',
-    'routeResolver',
-    'route',
-    'i18next'
-] , function(angular) {
-    'use strict';
+﻿'use strict';
+function main() {
+    var manifest = [
+        'application',
+        'route',
+        'app/common/i18nSvc',
 
-    angular.bootstrap(document , ['merchantWeb']);
-});
+        'app/calendar/calendarCtrl'
+    ];
+    require(manifest, function () {
+        angular.bootstrap(document, ['merchantWeb']);
+    })
+}

@@ -11,14 +11,12 @@
 <div id="container">
     <div ng-view></div>
 </div>
+<script type="text/javascript" src="app/main.js"></script>
 <script type="text/javascript" src="node_modules/requirejs/require.js"></script>
 <script type="text/javascript">
-    require(['require', "app/require.cfg"], function (req, config) {
+    require(["app/require.cfg"], function (config) {
         // update global require config
         window.require.config(config);
-
-        // load app
-        req(['app/main.js']);
     });
 </script>
 </body>

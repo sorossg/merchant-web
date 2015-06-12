@@ -1,6 +1,6 @@
 ﻿define([
     'application',
-    'text!app/calendar/calendar.html'
+    'text!app/home/home.html'
 ], function (app) {
     'use strict';
     var args = arguments;
@@ -11,7 +11,7 @@
             //Define routes - controllers will be loaded dynamically
             var route = routeResolverSvcProvider.route;
             $routeProvider
-                .when('/', route.resolve('app/calendar/calendar', args[1]))
+                .when('/', route.resolve('app/home/home', args[1]))
                 .otherwise({
                     redirectTo: '/'
                 });

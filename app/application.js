@@ -1,8 +1,6 @@
 ﻿define([
-        'angular',
-        './configuration',
-        'i18next'
-], function (angular, configuration, i18next) {
+        'main.cfg'
+], function (config) {
     'use strict';
 
     var app = angular.module('merchantWeb',
@@ -12,22 +10,18 @@
     ]);
 
     app.register = app;
-    app.configuration = configuration;
+    app.settings = config;
 
     app.config([
-        '$routeProvider',
-        'routeResolverSvcProvider',
         '$controllerProvider',
         '$compileProvider',
         '$filterProvider',
         '$provide',
-        function ($routeProvider,
-            routeResolverSvc,
+        function (
             $controllerProvider,
             $compileProvider,
             $filterProvider,
-            $provide,
-            $i18nextProvider
+            $provide
             ) {
 
             app.register = {
@@ -46,7 +40,7 @@
                 resGetPath: '/json/translations/__lng__.json'
             };
 
-            i18next.init($i18nextProviderOptions);
+            i18n.init($i18nextProviderOptions);
         }
     ]);
     return app;
