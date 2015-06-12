@@ -6,7 +6,11 @@ define([
 ], function (app) {
     'use strict';
     app.register.controller('homeCtrl',
-        [function () {
+        ['$scope',function ($scope) {
+            $scope.data = {};
 
+            var data = $scope.data;
+
+            data.test = "test";
         }]);
 });

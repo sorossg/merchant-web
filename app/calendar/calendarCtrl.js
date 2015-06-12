@@ -3,7 +3,7 @@
 ], function (app) {
     'use strict';
     app.register.controller('calendarCtrl',
-        ['$scope', 'i18nSvc', function ($scope, i18nSvc) {
+        ['$scope','$element', 'i18nSvc','$timeout', function ($scope, $element, i18nSvc, $timeout) {
             $scope.data = {};
             $scope.fn = {};
 
@@ -12,7 +12,7 @@
 
             $scope.i18n = i18nSvc.getLanguage("calendar");
 
-            data.tasks = [
+            var tasks = [
                 {
                     title: "task 1",
                     startTime: "6:15",
@@ -43,10 +43,12 @@
                 };
             }());
 
-
+            $timeout(function () {
+                showTasks(tasks)
+            }, 500);
 
             var showTasks = function (tasks) {
-
-            }
+                data.tasks = tasks;
+            };
         }]);
 });

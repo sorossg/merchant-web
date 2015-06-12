@@ -10,8 +10,7 @@
         <tr ng-repeat="day in data.calendar.dayAxis">
             <td >{{::day}}</td>
             <td class="time_point" ng-repeat="timepoint in data.calendar.timeAxis" >
-                <div class="task_container" ng-attr-day="{{day}}" ng-attr-time="{{timepoint}}" ng-droppable>
-
+                <div class="task_container" ng-attr-day="{{day}}" ng-attr-time="{{timepoint}}" ng-droppable task-container>
                 </div>
             </td>
         </tr>
