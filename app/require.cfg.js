@@ -13,9 +13,7 @@
             'moment': 'node_modules/moment/moment',
             'lodash': 'node_modules/lodash/index',
             'text': 'node_modules/requirejs-text/text',
-            'ng-i18next': 'bower_components/ng-i18next/dist/ng-i18next.min',
-            'i18next': 'bower_components/i18next/i18next.min',
-            'ng-sanitize': 'bower_components/angular-sanitize/angular-sanitize.min'
+            'i18next': 'bower_components/i18next/i18next.amd.min'
         },
 
         shim: {
@@ -29,13 +27,6 @@
                 'exports': 'angular'
             },
             'angular-route': {
-                'deps': ['angular']
-            },
-            'ng-i18next': {
-                'deps': ['angular','i18next', 'ng-sanitize']
-            },
-
-            'ng-sanitize': {
                 'deps': ['angular']
             }
         }

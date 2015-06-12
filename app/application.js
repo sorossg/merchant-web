@@ -1,14 +1,14 @@
 ﻿define([
         'angular',
-        './configuration'
-], function (angular, configuration) {
+        './configuration',
+        'i18next'
+], function (angular, configuration, i18next) {
     'use strict';
 
     var app = angular.module('merchantWeb',
     [
         'routeResolver',
-        'ngRoute',
-        'jm.i18next'
+        'ngRoute'
     ]);
 
     app.register = app;
@@ -21,7 +21,6 @@
         '$compileProvider',
         '$filterProvider',
         '$provide',
-        '$i18nextProvider',
         function ($routeProvider,
             routeResolverSvc,
             $controllerProvider,
@@ -47,9 +46,7 @@
                 resGetPath: '/json/translations/__lng__.json'
             };
 
-            i18n.init($i18nextProviderOptions);
-
-            $i18nextProvider.options = $i18nextProviderOptions
+            i18next.init($i18nextProviderOptions);
         }
     ]);
     return app;

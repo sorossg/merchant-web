@@ -4,7 +4,7 @@
     'application',
     'routeResolver',
     'route',
-    'ng-i18next'
+    'i18next'
 ] , function(angular) {
     'use strict';
 

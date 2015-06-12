@@ -1,19 +1,20 @@
 ﻿define([
-    'application'
+    'application',
+    'app/common/i18nSvc'
 ], function (app) {
     'use strict';
     app.register.controller('calendarCtrl',
-        ['$scope', function ($scope) {
-            $scope.data = {};
-            $scope.fn = {};
+        ['$scope','i18nSvc', function ($scope, i18nSvc) {
+                $scope.data = {};
+                $scope.fn = {};
 
-            var data = $scope.data;
-            var fn = $scope.fn;
+                var data = $scope.data;
+                var fn = $scope.fn;
 
-            data.greeting = "Halo!!";
+                $scope.i18n = i18nSvc.getLanguage("calendar");
 
-            fn.greeting = function () {
-                alert("halo!!")
-            }
-        }]);
+                fn.greeting = function () {
+                   $scope.i18n.greeting = "test binding";
+                }
+            }]);
 });
