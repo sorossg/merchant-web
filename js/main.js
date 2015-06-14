@@ -30,7 +30,7 @@ function main() {
         'js/services/i18nSvc',
 
         'js/appointment/AppointmentCtrl',
-        'js/calendar/calendarCtrl'
+        'js/calendar/CalendarCtrl', 'js/calendar/task-container', 'js/calendar/CalendarSvc'
     ];
 
     require(manifest, function () {

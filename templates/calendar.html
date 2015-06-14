@@ -1,16 +1,16 @@
-<div ng-controller="calendarCtrl">
+<div ng-controller="CalendarCtrl">
     <table id="calendar">
         <thead>
         <tr>
             <td></td>
-            <td class="calendar_header" ng-repeat="timeline in data.calendar.timeAxis">{{::timeline}}</td>
+            <td class="calendar_header" ng-repeat="timeline in ::data.calendar.timeAxis">{{::timeline}}</td>
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="day in data.calendar.dayAxis">
+        <tr ng-repeat="day in ::data.calendar.dayAxis">
             <td >{{::day}}</td>
             <td class="time_point" ng-repeat="timepoint in data.calendar.timeAxis" >
-                <div class="task_container" ng-attr-day="{{day}}" ng-attr-time="{{timepoint}}" ng-droppable task-container>
+                <div class="task_container" ng-attr-day="{{::day}}" ng-attr-time="{{::timepoint}}" ng-click="fn.setEndTime($event)">
                 </div>
             </td>
         </tr>
