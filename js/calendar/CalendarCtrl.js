@@ -34,7 +34,7 @@ app.controller('CalendarCtrl',
 
         var showTasks = function (tasks) {
             $timeout(function () {
-                CalendarSvc.registerTask(tasks);
+                CalendarSvc.registerTasks(tasks);
                 CalendarSvc.showTask();
             }, 500);
         };

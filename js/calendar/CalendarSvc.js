@@ -45,7 +45,8 @@ app.factory("CalendarSvc", ["$compile", function ($compile) {
     };
 
     Calendar.prototype.populateTasks = function () {
-        this.tasks.forEach(function (task) {
+        var self = this;
+        self.tasks.forEach(function (task) {
             var taskContainer = self.$calendar.find("div[day='" + task.day + "'][time='" + task.startTime + "']");
             task.taskElement.appendTo(taskContainer);
             $compile(task.taskElement);
@@ -53,7 +54,7 @@ app.factory("CalendarSvc", ["$compile", function ($compile) {
     };
 
     Calendar.prototype.__setWidthTaskElement = function (task) {
-        var taskElementWidth = task.duration * self.PIXCEL_PER_MINUTE;
+        var taskElementWidth = task.duration * this.PIXCEL_PER_MINUTE;
         task.taskElement.width(taskElementWidth);
     };
 

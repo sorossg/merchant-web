@@ -2,7 +2,7 @@
 
 var app = null;
 
-function main() {
+(function main() {
     app = angular.module('merchantWeb',
         [
             'ngRoute'
@@ -30,10 +30,10 @@ function main() {
         'js/services/i18nSvc',
 
         'js/appointment/AppointmentCtrl',
-        'js/calendar/CalendarCtrl', 'js/calendar/task-container', 'js/calendar/CalendarSvc'
+        'js/calendar/CalendarCtrl', 'js/calendar/CalendarSvc'
     ];
 
     require(manifest, function () {
         angular.bootstrap(document, ['merchantWeb']);
     })
-}
+}());
