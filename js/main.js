@@ -27,6 +27,8 @@ var app = null;
     }]);
 
     var manifest = [
+        'js/common/ng-hide-element',
+
         'js/services/i18nSvc',
 
         'js/appointment/AppointmentCtrl',
