@@ -1,5 +1,5 @@
 'use strict';
-app.controller('AppointmentCtrl',
+app.controller('AppointmentController',
     ['$scope', function ($scope) {
         $scope.data = {};
 

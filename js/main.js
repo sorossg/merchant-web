@@ -10,7 +10,7 @@ var app = null;
 
     app.config(['$routeProvider',function ($routeProvider) {
         $routeProvider
-            .when('/', {controller: 'AppointmentCtrl', templateUrl: 'templates/appointment.html'})
+            .when('/', {controller: 'AppointmentController', templateUrl: 'templates/appointment.html'})
             .otherwise({
                 redirectTo: '/'
             });
@@ -27,14 +27,14 @@ var app = null;
     }]);
 
     var manifest = [
-        'js/common/ng-hide-element',
+        'js/services/i18nService',
 
-        'js/services/i18nSvc',
-
-        'js/appointment/AppointmentCtrl',
-        'js/calendar/CalendarCtrl',
-        'js/calendar/CalendarSvc',
-        'js/calendar/task-container'
+        'js/appointment/AppointmentController',
+        'js/calendar/CalendarController',
+        'js/calendar/CalendarService',
+        'js/calendar/TaskContainerDirective',
+        'js/calendar/ColumnTitleDirective',
+        'js/calendar/CalendarHeaderDirective'
     ];
 
     require(manifest, function () {

@@ -1,5 +1,5 @@
 'use strict';
-app.factory('i18nSvc',
+app.factory('i18nService',
     [function () {
         var __lng = {};
 

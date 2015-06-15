@@ -1,17 +1,15 @@
-<div ng-controller="CalendarCtrl">
+<div ng-controller="CalendarController">
     <div class="navigation_bar"></div>
     <div class="calendar_table">
         <table id="calendar">
             <thead>
-            <tr>
+            <tr ng-calendar-header>
                 <th></th>
-                <th ng-repeat="timeline in ::data.calendar.timeAxis">
-                    <p class="calendar_header text-size-24pt text-dark-gray" ng-hide-element data-is-hidden="false">{{::timeline}}</p>
-                </th>
+                <th id="column_title" class="column_title text-size-24pt text-dark-gray" ng-column-title><p></p></th>
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="day in ::data.calendar.dayAxis">
+            <tr ng-repeat="day in ::data.calendar.dayAxis ">
                 <td>{{::day}}</td>
                 <td class="time_point" ng-repeat="timepoint in data.calendar.timeAxis">
                     <div class="task_container" ng-attr-day="{{::day}}" ng-attr-time="{{::timepoint}}"

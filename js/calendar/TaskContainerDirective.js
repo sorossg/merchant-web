@@ -1,6 +1,8 @@
 /**
  * Created by Hieu M.Tr on 6/15/2015.
  */
+'use strict';
+
 app.directive("taskContainer", [function () {
     return {
         restrict: "A",

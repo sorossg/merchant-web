@@ -1,7 +1,9 @@
 /**
  * Created by tiger on 14/06/2015.
  */
-app.factory("CalendarSvc", ["$compile", function ($compile) {
+'use strict';
+
+app.factory("CalendarService", ["$compile", function ($compile) {
     function Calendar() {
         this.taskElements = [];
         this.$calendar = $('#calendar');
@@ -116,10 +118,18 @@ app.factory("CalendarSvc", ["$compile", function ($compile) {
         return $($timePoint[1]).offset().left - $($timePoint[0]).offset().left;
     };
 
+
     Calendar.prototype.__getDuration = function (startTime, endTime) {
         var a = moment.duration(startTime);
         var b = moment.duration(endTime);
         return b.subtract(a).asMinutes();
+    };
+
+    Calendar.prototype.renderHeader = function () {
+        var self = this;
+        self.calendar.timeAxis.forEach(function (timePoint) {
+
+        })
     };
 
     return new Calendar();

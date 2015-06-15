@@ -1,9 +1,9 @@
 ﻿'use strict';
-app.controller('CalendarCtrl',
-    ['$scope', '$element', 'i18nSvc', '$timeout', 'CalendarSvc', function ($scope, $element, i18nSvc, $timeout, CalendarSvc) {
+app.controller('CalendarController',
+    ['$scope', 'i18nService', '$timeout', 'CalendarService', function ($scope, i18nService, $timeout, CalendarService) {
         $scope.data = {};
         $scope.fn = {};
-        $scope.i18n = i18nSvc.getLanguage("calendar");
+        $scope.i18n = i18nService.getLanguage("calendar");
 
         var data = $scope.data;
         var fn = $scope.fn;
@@ -38,15 +38,16 @@ app.controller('CalendarCtrl',
 
         var showTasks = function (tasks) {
             $timeout(function () {
-                CalendarSvc.registerTasks(tasks);
-                CalendarSvc.showTask();
+                data.tasks = tasks;
+                CalendarService.registerTasks(tasks);
+                CalendarService.showTask();
             }, 500);
         };
 
         (function showView() {
             data.calendar = {
-                timeAxis: CalendarSvc.timeAxis,
-                dayAxis: CalendarSvc.dayAxis
+                timeAxis: CalendarService.timeAxis,
+                dayAxis: CalendarService.dayAxis
             };
             showTasks(tasks)
         }());
@@ -59,6 +60,6 @@ app.controller('CalendarCtrl',
                 return false;
             }
 
-            CalendarSvc.setEndTime($target,$rowParent,$resizingTask, $event.pageX );
+            CalendarService.setEndTime($target,$rowParent,$resizingTask, $event.pageX );
         };
     }]);
