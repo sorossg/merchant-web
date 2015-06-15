@@ -2,15 +2,18 @@
     <table id="calendar">
         <thead>
         <tr>
-            <td></td>
-            <td class="calendar_header" ng-repeat="timeline in ::data.calendar.timeAxis">{{::timeline}}</td>
+            <th></th>
+            <th ng-repeat="timeline in ::data.calendar.timeAxis">
+                <p class="calendar_header">{{::timeline}}</p>
+            </th>
         </tr>
         </thead>
         <tbody>
         <tr ng-repeat="day in ::data.calendar.dayAxis">
-            <td >{{::day}}</td>
-            <td class="time_point" ng-repeat="timepoint in data.calendar.timeAxis" >
-                <div class="task_container" ng-attr-day="{{::day}}" ng-attr-time="{{::timepoint}}" ng-click="fn.setEndTime($event)">
+            <td>{{::day}}</td>
+            <td class="time_point" ng-repeat="timepoint in data.calendar.timeAxis">
+                <div class="task_container" ng-attr-day="{{::day}}" ng-attr-time="{{::timepoint}}"
+                     ng-mouseup="fn.setEndTime($event)" task-container>
                 </div>
             </td>
         </tr>

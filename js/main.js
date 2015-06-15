@@ -30,7 +30,9 @@ var app = null;
         'js/services/i18nSvc',
 
         'js/appointment/AppointmentCtrl',
-        'js/calendar/CalendarCtrl', 'js/calendar/CalendarSvc'
+        'js/calendar/CalendarCtrl',
+        'js/calendar/CalendarSvc',
+        'js/calendar/task-container'
     ];
 
     require(manifest, function () {
