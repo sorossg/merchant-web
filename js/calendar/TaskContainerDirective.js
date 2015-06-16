@@ -13,20 +13,21 @@ app.directive("taskContainer", [function () {
             $elm.droppable({
                 tolerance: "intersect",
                 drop: function (event, ui) {
-                    var draggedElement = ui.helper[0];
-                    var droppableElement = event.target;
-                    $(draggedElement).appendTo(droppableElement);
-                    var targetOffset = $(droppableElement).offset();
-                    $(draggedElement).offset({top: targetOffset.top, left: targetOffset.left});
+                    var $draggedElement = $(ui.helper[0]);
+                    var $droppableElement = $(event.target);
+                    var $task = $draggedElement.find(".task");
+                    $draggedElement.appendTo($droppableElement);
+                    var targetOffset = $droppableElement.offset();
+                    $draggedElement.offset({top: targetOffset.top, left: targetOffset.left});
 
                     //get new datetime and change datetime of task
-                    var day = $(droppableElement).attr("day");
-                    var startTime = $(droppableElement).attr("time");
-                    var duration = $(draggedElement).attr("data-duration");
+                    var day = $droppableElement.attr("day");
+                    var startTime = $droppableElement.attr("time");
+                    var duration = $task.attr("data-duration");
                     var endTime = moment(startTime, "hh:mm").add(duration, "m").format("hh:mm");
-                    $(draggedElement).attr("data-day", day);
-                    $(draggedElement).attr("data-start_time", startTime);
-                    $(draggedElement).attr("data-end_time", endTime);
+                    $task.attr("data-day", day);
+                    $task.attr("data-start_time", startTime);
+                    $task.attr("data-end_time", endTime);
                 }
             });
         }

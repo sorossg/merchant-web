@@ -67,8 +67,7 @@ app.factory("CalendarService", ["$compile", function ($compile) {
     Calendar.prototype.__makeTaskResizable = function ($taskElement) {
         var currentHeight = $taskElement.height();
         $taskElement.resizable({
-            minHeight: currentHeight,
-            maxHeight: currentHeight,
+            handles: "e",
             start: function (event, ui) {
                 $taskElement.addClass("isResizing");
             },
