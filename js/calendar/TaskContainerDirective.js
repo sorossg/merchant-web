@@ -11,7 +11,7 @@ app.directive("taskContainer", [function () {
 
             //make container droppable
             $elm.droppable({
-                tolerance: "pointer",
+                tolerance: "intersect",
                 drop: function (event, ui) {
                     var draggedElement = ui.helper[0];
                     var droppableElement = event.target;

@@ -15,48 +15,52 @@ app.factory("CalendarService", ["$compile", function ($compile) {
         var self = this;
         tasks.forEach(function (task) {
             var taskDuration = self.__getDuration(task.startTime, task.endTime);
+            var taskWrapper = $("<div class='task_wrapper'></div>");
             var taskElement = $("<div class='task' data-start_time='' data-end_time='' data-day=''></div>");
-            $("<span class='glyphicon glyphicon-move' aria-hidden='true'></span>").appendTo(taskElement);
             $("<span></span>").text(task.title).appendTo(taskElement);
             taskElement.attr("data-start_time", task.startTime);
             taskElement.attr("data-end_time", task.endTime);
             taskElement.attr("data-day", task.day);
             taskElement.attr("data-duration", taskDuration);
-            self.taskElements.push(taskElement);
+            taskElement.appendTo(taskWrapper);
+            self.taskElements.push(taskWrapper);
         })
     };
 
     Calendar.prototype.showTask = function () {
         var self = this;
         self.populateTasks();
-        self.taskElements.forEach(function (task) {
+        var task;
+        self.taskElements.forEach(function (taskWrapper) {
+            task = taskWrapper.find(".task");
             self.__setWidthTaskElement(task);
-            self.__makeTaskDraggable(task);
+            self.__makeTaskDraggable(taskWrapper);
             self.__makeTaskResizable(task)
         })
     };
 
     Calendar.prototype.populateTasks = function () {
         var self = this;
-        self.taskElements.forEach(function (task) {
+        self.taskElements.forEach(function (taskWrapper) {
+            var task = taskWrapper.find(".task");
             var day = task.attr("data-day");
             var startTime = task.attr("data-start_time");
             var taskContainer = self.$calendar.find("div[day='" + day + "'][time='" + startTime + "']");
-            task.appendTo(taskContainer);
-            $compile(task);
+            taskWrapper.appendTo(taskContainer);
+            $compile(taskWrapper);
         })
     };
 
-    Calendar.prototype.__setWidthTaskElement = function (task) {
+    Calendar.prototype.__setWidthTaskElement = function ($taskElement) {
         var pixelPerMinute = this.__calculatePixelPerMinute();
-        var taskDuration = task.attr("data-duration");
+        var taskDuration = $taskElement.attr("data-duration");
         var taskElementWidth = taskDuration * pixelPerMinute;
-        task.width(taskElementWidth);
+        $taskElement.width(taskElementWidth);
     };
 
-    Calendar.prototype.__makeTaskDraggable = function ($taskElement) {
-        $taskElement.draggable({
-            handle: ".glyphicon"
+    Calendar.prototype.__makeTaskDraggable = function ($taskWrapper) {
+        $taskWrapper.draggable({
+            handle: ".task"
         });
     };
 
@@ -99,11 +103,11 @@ app.factory("CalendarService", ["$compile", function ($compile) {
 
     Calendar.prototype.__calculatePixelPerMinute = function () {
         var timeRange = this.__getDuration(_.first(this.timeAxis), _.last(this.timeAxis));
-        var rowWidth = this.__calculateTaskContainAreaWidth();
+        var rowWidth = this.__calculateTaskContainRowWidth();
         return rowWidth / timeRange
     };
 
-    Calendar.prototype.__calculateTaskContainAreaWidth = function () {
+    Calendar.prototype.__calculateTaskContainRowWidth = function () {
         var taskContainingRow = this.$calendar.find("tbody").find("tr")[0];
         var $timePoint = $(taskContainingRow).find(".time_point");
         var numberOfTimePoint = $timePoint.length;
@@ -124,13 +128,5 @@ app.factory("CalendarService", ["$compile", function ($compile) {
         var b = moment.duration(endTime);
         return b.subtract(a).asMinutes();
     };
-
-    Calendar.prototype.renderHeader = function () {
-        var self = this;
-        self.calendar.timeAxis.forEach(function (timePoint) {
-
-        })
-    };
-
     return new Calendar();
 }]);
