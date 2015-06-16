@@ -1,23 +1,29 @@
-<div ng-controller="CalendarController">
-    <div class="navigation_bar"></div>
-    <div class="calendar_table">
-        <table id="calendar">
-            <thead>
-            <tr ng-calendar-header>
-                <th></th>
-                <th id="column_title" class="column_title text-size-24pt text-dark-gray" ng-column-title><p></p></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr ng-repeat="day in ::data.calendar.dayAxis ">
-                <td>{{::day}}</td>
-                <td class="time_point" ng-repeat="timepoint in data.calendar.timeAxis">
-                    <div class="task_container" ng-attr-day="{{::day}}" ng-attr-time="{{::timepoint}}"
-                         ng-mouseup="fn.setEndTime($event)" task-container>
-                    </div>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
+<div ng-controller="CalendarController" class="calendar_table">
+    <table id="calendar">
+        <thead>
+        <tr>
+            <th colspan="{{data.calendar.timeAxis.length + 1}}">
+                <div class="navigation_bar"></div>
+            </th>
+        </tr>
+        <tr ng-calendar-header>
+            <th>
+                <p></p>
+            </th>
+            <th id="column_title" class="column_title text-size-17pt text-dark-gray" ng-column-title><p></p></th>
+        </tr>
+        </thead>
+        <tbody ng-calendar-body>
+        <!--repeated  content-->
+        <tr id="table_row" ng-calendar-row>
+            <!--display day-->
+            <td class="week_day text-size-17pt"><span></span></td>
+            <!--repeated content-->
+            <td class="time_point"  id="table_cell">
+                <div class="task_container" day="" time="" ng-mouseup="fn.setEndTime($event)" task-container>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 </div>

@@ -34,7 +34,9 @@ var app = null;
         'js/calendar/CalendarService',
         'js/calendar/TaskContainerDirective',
         'js/calendar/ColumnTitleDirective',
-        'js/calendar/CalendarHeaderDirective'
+        'js/calendar/CalendarHeaderDirective',
+        'js/calendar/CalendarBodyDirective',
+        'js/calendar/CalendarRowDirective'
     ];
 
     require(manifest, function () {

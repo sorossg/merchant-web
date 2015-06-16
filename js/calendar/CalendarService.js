@@ -3,12 +3,12 @@
  */
 'use strict';
 
-app.factory("CalendarService", ["$compile", function ($compile) {
+app.factory("CalendarService", ["$compile","$interval","$timeout", function ($compile, $interval, $timeout) {
     function Calendar() {
         this.taskElements = [];
         this.$calendar = $('#calendar');
-        this.timeAxis = ["6:00", "6:15", "6:30", "6:45", "7:00", "7:15", "7:30", "7:45", "8:00", "8:15", "8:30", "8:45", "9:00", "9:15", "9:30", "9:45", "10:00", "10:15", "10:30", "10:45", "11:00", "11:15", "11:30", "11:45", "12:00",  "12:15", "12:30", "12:45", "13:00", "13:15", "13:30", "13:45", "14:00", "14:15", "14:30", "14:45", "15:00"];
-        this.dayAxis = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+        this.timeAxis = ["8:00", "8:15", "8:30", "8:45", "9:00", "9:15", "9:30", "9:45", "10:00", "10:15", "10:30", "10:45", "11:00", "11:15", "11:30", "11:45", "12:00", "12:15", "12:30", "12:45", "13:00", "13:15", "13:30", "13:45", "14:00", "14:15", "14:30", "14:45", "15:00","15:15", "15:30", "15:45", "16:00", "16:15", "16:30", "16:45", "17:00"];
+        this.dayAxis = this.__decorateDayAxisData();
     }
 
     Calendar.prototype.registerTasks = function (tasks) {
@@ -25,6 +25,24 @@ app.factory("CalendarService", ["$compile", function ($compile) {
             taskElement.appendTo(taskWrapper);
             self.taskElements.push(taskWrapper);
         })
+    };
+
+    Calendar.prototype.startShowTask = function () {
+        var self = this;
+        var finalDay = _.last(self.dayAxis);
+        var finalTime = _.last(self.timeAxis);
+        var checkDoneRenderCalendar = $interval(function () {
+            var finalCell = self.$calendar.find("div[day='" + finalDay + "'][time='" + finalTime + "']");
+            if (finalCell.length){
+                self.showTask();
+                $interval.cancel(checkDoneRenderCalendar);
+            }
+        }, 500);
+
+        $timeout(function () {
+            console.log("something is wrong with rendering calendar");
+            $interval.cancel(checkDoneRenderCalendar);
+        }, 150000);
     };
 
     Calendar.prototype.showTask = function () {
@@ -77,7 +95,7 @@ app.factory("CalendarService", ["$compile", function ($compile) {
         });
     };
 
-    Calendar.prototype.setEndTime = function ($target,$rowParent, $resizingTask, coordinateX) {
+    Calendar.prototype.setEndTime = function ($target, $rowParent, $resizingTask, coordinateX) {
         var $rowParent = $target.parents("tr");
         var taskContainerWidth = this.__calculateTaskContainerWidth();
         var newTimePoint = null;
@@ -121,6 +139,13 @@ app.factory("CalendarService", ["$compile", function ($compile) {
         return $($timePoint[1]).offset().left - $($timePoint[0]).offset().left;
     };
 
+    Calendar.prototype.__decorateDayAxisData = function () {
+        var result = [];
+        for (var i = 0; i <= 6; i++) {
+            result.push(moment().day(i).format("ddd DD"));
+        }
+        return result;
+    };
 
     Calendar.prototype.__getDuration = function (startTime, endTime) {
         var a = moment.duration(startTime);

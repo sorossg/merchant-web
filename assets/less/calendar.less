@@ -1,27 +1,58 @@
 .calendar_table {
-  margin-top: 64px;
+  overflow-x: scroll;
   table {
-    border-spacing: 0; /* Removes the cell spacing via CSS */
+    position: absolute;
+    overflow-x: scroll;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 99%;
+    border-spacing: 0;
     border-collapse: collapse;
+
   }
 
   thead {
     tr {
       border-bottom: 1px solid @bright-gray-color;
     }
+
+    tr:nth-child(2) {
+      th:first-child {
+        p {
+          width: 130px;
+        }
+      }
+
+      th:nth-child(2) {
+        p {
+          visibility: hidden;
+        }
+      }
+    }
   }
+}
+
+.navigation_bar {
+  top: 0;
+  width: 100%;
+  height: 64px;
+  background-image: url("/assets/images/navigation_bar_background.jpg");
+  background-repeat: repeat-x;
+  background-size: contain;
+  border: 1px solid @gray-color;
 }
 
 .column_title {
   p {
     position: relative;
-    left: -37px;
-    text-align: left;
+    right: 27px;
+    margin: 0;
     width: 48px;
     height: 64px;
     border: none;
-    margin: 0;
-    line-height: 64px;
+    text-align: right;
+    line-height: 64px
   }
 }
 
@@ -36,7 +67,6 @@
   padding: 0;
   margin: 0;
   border: 1px solid #808080;
-  height: 50px;
 }
 
 .task_container {
@@ -48,17 +78,15 @@
 }
 
 .task {
-  z-index: 10001;
+  z-index: 1001;
   height: 20px;
   border: 1px solid blue;
   border-radius: 1px;
 }
 
-.navigation_bar {
-  top: 0;
-  position: fixed;
-  width: 100%;
-  height: 64px;
-  background-color: @orange-color;
-  border: 1px solid @gray-color;
+.week_day {
+  padding-left: 35px;
+  padding-top: 20px;
+  vertical-align: top;
+  font-size: 17pt;
 }
