@@ -18,7 +18,7 @@ app.directive("ngCalendarBody", ["$compile",function ($compile) {
 
             dayAxis.forEach(function (day) {
                 $clone = $tr.clone();
-                var $weekday = $clone.find(".week_day").find("span");
+                var $weekday = $clone.find(".week_day");
                 var $taskContainer = $clone.find(".task_container");
                 $weekday.text(day);
                 $taskContainer.attr("day", day);

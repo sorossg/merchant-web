@@ -7,17 +7,20 @@
             </th>
         </tr>
         <tr ng-calendar-header>
-            <th>
-                <p></p>
+            <th class="font-helvetica-bold text-green">
+                <p>Total 67</p>
             </th>
-            <th id="column_title" class="column_title text-size-17pt text-dark-gray" ng-column-title><p></p></th>
+            <th id="column_title" class="column_title text-dark-gray" ng-column-title><p></p></th>
         </tr>
         </thead>
         <tbody ng-calendar-body>
         <!--repeated  content-->
         <tr id="table_row" ng-calendar-row>
             <!--display day-->
-            <td class="week_day text-size-17pt"><span></span></td>
+            <td >
+                <p class="week_day text-dark-gray" ></p>
+                <span class="total_appointment">3</span>
+            </td>
             <!--repeated content-->
             <td class="time_point"  id="table_cell">
                 <div class="task_container" day="" time="" ng-mouseup="fn.setEndTime($event)" task-container>

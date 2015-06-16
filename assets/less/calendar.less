@@ -21,14 +21,36 @@
       th:first-child {
         p {
           width: 130px;
+          height: 64px;
+          margin: 0;
+          border: none;
+          line-height: 64px;
+          text-align: center;
         }
       }
 
       th:nth-child(2) {
+        border-left: 1px solid @bright-gray-color;
         p {
           visibility: hidden;
         }
       }
+
+      th:last-child {
+        border-right: 1px solid @bright-gray-color;
+        p {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+tbody {
+  tr {
+    td:first-child {
+      border-bottom: 1px solid @bright-gray-color;
+      text-align: center;
     }
   }
 }
@@ -40,7 +62,7 @@
   background-image: url("/assets/images/navigation_bar_background.jpg");
   background-repeat: repeat-x;
   background-size: contain;
-  border: 1px solid @gray-color;
+  border: 1px solid @bright-gray-color;
 }
 
 .column_title {
@@ -56,17 +78,15 @@
   }
 }
 
-.column_title:nth-child(2) {
-  p {
-    left: 0;
-  }
-}
-
 .time_point {
   position: relative;
   padding: 0;
   margin: 0;
-  border: 1px solid #808080;
+  border: 1px solid @bright-gray-color;
+}
+
+.time_point:nth-last-child(4n + 1){
+  border-left: 2px solid @dark-gray-color;
 }
 
 .task_container {
@@ -85,8 +105,20 @@
 }
 
 .week_day {
-  padding-left: 35px;
-  padding-top: 20px;
-  vertical-align: top;
   font-size: 17pt;
+  text-align: center;
+  margin-bottom: 0px;
+}
+
+
+.total_appointment {
+  .text-white();
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+  line-height: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 30px;
+  background-color: @green-color;
+  text-align: center;
 }
