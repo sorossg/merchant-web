@@ -39,6 +39,18 @@ var app = null;
         'js/calendar/CalendarRowDirective'
     ];
 
+    var templates = [
+      'templates/appointment_details_partial.html'
+    ];
+
+    app.run(["$templateRequest","$templateCache",function ($templateRequest, $templateCache) {
+        templates.forEach(function (template) {
+            $templateRequest(template).then(function (data) {
+                $templateCache.put(template, data);
+            });
+        })
+    }]);
+
     require(manifest, function () {
         angular.bootstrap(document, ['merchantWeb']);
     })

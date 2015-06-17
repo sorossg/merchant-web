@@ -11,25 +11,33 @@ app.controller('CalendarController',
         var tasks = [
             {
                 id: 1,
-                title: "task 1",
+                customer: "CustomerA",
+                service: "service A",
+                note: "some text",
                 startTime: "8:00",
                 endTime: "11:15",
                 day: "Tue 16"
             }, {
                 id: 2,
-                title: "task 2",
+                customer: "CustomerB",
+                service: "service A",
+                note: "some text",
                 startTime: "8:15",
                 endTime: "10:15",
                 day: "Wed 17"
             }, {
                 id: 3,
-                title: "task 3",
+                customer: "CustomerC",
+                service: "service A",
+                note: "some text",
                 startTime: "10:00",
                 endTime: "10:30",
                 day: "Thu 18"
             }, {
                 id: 4,
-                title: "task 4",
+                customer: "CustomerD",
+                service: "service A",
+                note: "some text",
                 startTime: "9:15",
                 endTime: "10:00",
                 day: "Fri 19"

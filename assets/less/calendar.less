@@ -60,6 +60,7 @@ tbody {
     display: table;
     position: relative;
     height: 14%;
+    overflow-x: hidden;
 
     td {
       width: 48px;
@@ -78,6 +79,8 @@ tbody {
       width: 0;
     }
   }
+
+  tr
 }
 
 .navigation_bar {
@@ -165,6 +168,23 @@ tbody {
   border-left: 2px solid @dark-gray-color;
 }
 
+.task_wrapper {
+  height: 100%;
+}
+
+.task_padding {
+  height: 100%;
+  border: 2px solid red;
+  border-radius: 8px;
+  overflow: hidden;
+  padding: 3px 10px 3px 10px;
+
+  p {
+    margin: 0;
+    line-height: 20px;
+  }
+}
+
 .task_container {
   position: absolute;
   top: 0;
@@ -174,10 +194,9 @@ tbody {
 }
 
 .task {
+  padding: 2px;
   z-index: 1001;
-  height: 20px;
-  border: 1px solid blue;
-  border-radius: 1px;
+  height: 100%;
 }
 
 .week_day {
