@@ -51,10 +51,31 @@
 }
 
 tbody {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  top: 132px;
+  overflow-y: auto;
   tr {
+    display: table;
+    position: relative;
+    height: 14%;
+
+    td {
+      width: 48px;
+      padding: 0 0 3px 0;
+      margin: 0;
+      border: 1px solid @bright-gray-color;
+    }
+
     td:first-child {
       border-bottom: 1px solid @bright-gray-color;
       text-align: center;
+      width:130px;
+    }
+
+    td:last-child {
+      width: 0;
     }
   }
 }
@@ -62,11 +83,65 @@ tbody {
 .navigation_bar {
   top: 0;
   width: 100%;
-  height: 64px;
-  background-image: url("/assets/images/navigation_bar_background.jpg");
-  background-repeat: repeat-x;
+  height: 66px;
   background-size: contain;
   border: 1px solid @bright-gray-color;
+
+  background-image: -webkit-gradient(
+          linear,
+          left bottom,
+          left top,
+          color-stop(0.75, #FFAE00),
+          color-stop(1, #FFC800)
+  );
+  background-image: -o-linear-gradient(top, #FFAE00 75%, #FFC800 100%);
+  background-image: -moz-linear-gradient(top, #FFAE00 75%, #FFC800 100%);
+  background-image: -webkit-linear-gradient(top, #FFAE00 75%, #FFC800 100%);
+  background-image: -ms-linear-gradient(top, #FFAE00 75%, #FFC800 100%);
+  background-image: linear-gradient(to top, #FFAE00 75%, #FFC800 100%);
+
+  .wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 66px;
+  }
+
+  .select_datetime {
+    top: 13px;
+    height: 54px;
+    border: 2px solid #fff;
+    border-bottom: none;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    .padding-side-none();
+  }
+
+  .select_datetime > div {
+    height: 100%;
+  }
+
+  .select_datetime > div.active {
+    background-color: #fff;
+    border-bottom: 2px solid #FFFFFF;
+
+    .daily, .weekly {
+      .text-orange();
+    }
+  }
+
+  .daily, .weekly {
+    height: 100%;
+    margin-bottom: 0;
+    line-height: 50px;
+    text-align: center;
+    .text-white();
+
+    .glyphicon {
+      top: 14px;
+    }
+  }
 }
 
 .column_title {
@@ -84,12 +159,9 @@ tbody {
 
 .time_point {
   position: relative;
-  padding: 0;
-  margin: 0;
-  border: 1px solid @bright-gray-color;
 }
 
-.time_point:nth-last-child(4n + 1){
+.time_point:nth-last-child(4n + 1) {
   border-left: 2px solid @dark-gray-color;
 }
 
@@ -114,7 +186,6 @@ tbody {
   margin-bottom: 0px;
 }
 
-
 .total_appointment {
   .text-white();
   display: inline-block;
@@ -125,4 +196,21 @@ tbody {
   border-radius: 30px;
   background-color: @green-color;
   text-align: center;
+}
+
+.button_group {
+  button {
+    background-color: transparent;
+    border: none;
+    width: 75px;
+
+  }
+  img {
+    width: 100%;
+  }
+
+  .medium_screen {
+    text-align: right;
+    padding-right: 30px;
+  }
 }

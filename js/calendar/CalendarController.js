@@ -13,7 +13,7 @@ app.controller('CalendarController',
                 id: 1,
                 title: "task 1",
                 startTime: "8:00",
-                endTime: "16:15",
+                endTime: "11:15",
                 day: "Tue 16"
             }, {
                 id: 2,
@@ -25,7 +25,7 @@ app.controller('CalendarController',
                 id: 3,
                 title: "task 3",
                 startTime: "10:00",
-                endTime: "10:15",
+                endTime: "10:30",
                 day: "Thu 18"
             }, {
                 id: 4,
