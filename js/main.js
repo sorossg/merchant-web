@@ -20,7 +20,7 @@ var app = null;
             useCookie: false,
             useLocalStorage: false,
             fallbackLng: 'en',
-            resGetPath: '/assets/translations/__lng__.json'
+            resGetPath: 'assets/translations/__lng__.json'
         };
 
         i18n.init($i18nextProviderOptions);
