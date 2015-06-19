@@ -28,6 +28,11 @@ var app = null;
 
     var manifest = [
         'js/services/i18nService',
+        'js/services/ShopResourceService',
+        'js/services/AjaxService',
+        'js/services/StorageService',
+
+        'js/common/Configuration',
 
         'js/appointment/AppointmentController',
         'js/calendar/CalendarController',
@@ -36,7 +41,8 @@ var app = null;
         'js/calendar/ColumnTitleDirective',
         'js/calendar/CalendarHeaderDirective',
         'js/calendar/CalendarBodyDirective',
-        'js/calendar/CalendarRowDirective'
+        'js/calendar/CalendarRowDirective',
+        'js/calendar/ShopInfoService'
     ];
 
     var templates = [
