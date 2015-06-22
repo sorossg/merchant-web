@@ -43,21 +43,20 @@ app.factory("CalendarService", ["$compile","$interval","$timeout","$templateCach
         }, 500);
 
         $timeout(function () {
-            console.log("something is wrong with rendering calendar");
             $interval.cancel(checkDoneRenderCalendar);
         }, 150000);
     };
 
     Calendar.prototype.showTask = function () {
         var self = this;
-        self.populateTasks();
         var task;
         self.taskElements.forEach(function (taskWrapper) {
             task = taskWrapper.find(".task");
             self.__setWidthTaskElement(task);
             self.__makeTaskDraggable(taskWrapper);
             self.__makeTaskResizable(task)
-        })
+        });
+        self.populateTasks();
     };
 
     Calendar.prototype.populateTasks = function () {
@@ -152,7 +151,7 @@ app.factory("CalendarService", ["$compile","$interval","$timeout","$templateCach
     Calendar.prototype.__decorateDayAxisData = function () {
         var result = [];
         for (var i = 0; i <= 6; i++) {
-            result.push(moment().day(i).format("ddd DD"));
+            result.push(moment(new Date("2015-6-15")).day(i).format("ddd DD"));
         }
         return result;
     };
